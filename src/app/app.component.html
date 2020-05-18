@@ -4,12 +4,15 @@
   <input #ourFirstInput />
 </div>
 
+<div>
 <p angryEyes>They are Angry. Yes, very angry.</p>
-<span>I'm separating stuff</span>
-<p angryEyes>This is a second angry line. It won't be updated with emoji</p>
-<span>I'm separating stuff</span>
-<br />
+<p>This is a second angry line. It won't be updated with emoji</p>
+</div>
+
+<div>
 <ng-container [ngTemplateOutlet]="this.displayedTemplate"></ng-container>
 
 <ng-template #first><span>This is the first template.</span></ng-template>
 <ng-template #second><span>This is the second template.</span></ng-template>
+</div>
+

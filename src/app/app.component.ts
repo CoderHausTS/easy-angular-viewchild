@@ -9,7 +9,7 @@ import {
   TemplateRef,
   ViewChildren,
   QueryList,
-  ChangeDetectorRef,
+  ChangeDetectorRef
 } from '@angular/core';
 
 @Directive({
@@ -56,20 +56,20 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'easy-angular-viewchild';
 
   // a class with @Component or @Directive
-  @ViewChild(AngryEyesDirective, { read: false, static: false })
+  @ViewChild(AngryEyesDirective, { read: AngryEyesDirective, static: false })
   angryEyesElement: AngryEyesDirective;
 
   // a template reference variable
-  @ViewChild('testdecorator', { read: false, static: false })
+  @ViewChild('testdecorator', { static: false })
   testDecorator: ElementRef;
-  @ViewChild('ourFirstInput', { read: false, static: false })
+  @ViewChild('ourFirstInput', { read: ElementRef, static: false })
   testInput: ElementRef;
 
   // a TemplateRef
   // use the templates like we do in our code, use random to choose one?
   @ViewChildren(TemplateRef, { read: false })
-
   ourTemplates: QueryList<ElementRef>[];
+
   ourTemplate;
   displayedTemplate;
 
@@ -105,7 +105,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     // start templateref use
     const requestedTemplate = Math.floor(Math.random() * 2);
-    console.log(requestedTemplate)
     this.ourTemplate = this.ourTemplates.filter(
       (element, index) => index === requestedTemplate
     );
@@ -113,6 +112,5 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.displayedTemplate = this.ourTemplate[0];
     this.cdRef.detectChanges();
     // end templateref use
-
   }
 }
